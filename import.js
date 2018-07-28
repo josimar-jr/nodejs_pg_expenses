@@ -12,7 +12,7 @@ var process = module.exports = {
     console.time(`total process`);
 
     // Read the file 
-    var workbook = XLSX.readFile('./test/assets/__controle-se_modelo.xls');
+    var workbook = XLSX.readFile('./test/assets/__modelo.xlsx');
     var sheet_name_list = workbook.SheetNames;
     var xlData = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 
