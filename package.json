@@ -1,0 +1,29 @@
+{
+  "name": "meus_trocados",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "controle-se Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/controle-se/controle_se/issues"
+  },
+  "homepage": "https://gitlab.com/controle-se/controle_se#README",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "readline-sync": "^1.4.9",
+    "rxjs": "^5.5.8",
+    "sequelize": "^4.37.6",
+    "sequelize-cli": "^4.0.0",
+    "xlsx": "^0.12.6"
+  }
+}

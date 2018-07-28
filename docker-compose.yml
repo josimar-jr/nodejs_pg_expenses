@@ -1,0 +1,15 @@
+version: "3.6"
+
+services:
+    database:
+        image: postgres:latest
+        environment:
+            POSTGRES_PASSWORD: senha_postgres
+        ports:
+            - 5434:5432
+    
+    database_client:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
