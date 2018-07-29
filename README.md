@@ -1,6 +1,5 @@
-# Aplicação de Controle Financeiro
-
-para subir o ambiente de desenvolvimento e testes
+# Sample de importação xlsx para controle financeiro
+requisitos:
 
 ```
 ter o node instalado
@@ -15,4 +14,4 @@ Executar os comandos abaixo na pasta do projeto
     .\node_modules\.bin\sequelize.cmd db:migrate --env test
     node app.js
 ```
-Endpoint disponível `post /import`
+Endpoint disponível `post /import`, `post /test`
