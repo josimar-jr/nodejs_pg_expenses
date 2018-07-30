@@ -19,10 +19,10 @@ const sequelize = new Sequelize(
         dialect: 'postgres',
         isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED,
         pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
+            min: 1,
+            max: -1,
+            idle: 30000,
+            acquire: 40000
         }
     }
 );
