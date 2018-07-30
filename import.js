@@ -29,7 +29,11 @@ var process = module.exports = {
         xlData[x].user = userProcess
       }
 
-      queue.push( xlData );
+      queue.push( xlData, function(err){
+        if (err){
+          console.log(err)
+        }
+      } );
       queue.drain = finishLog;
 
     });
@@ -49,7 +53,7 @@ var process = module.exports = {
   }
 }
 
-function dataProcess( xlData ) {
+function dataProcess( xlData, callback ) {
   const db = require('./models/db.js');
   var userProcess = xlData.user;
   var accountProcess;
@@ -64,28 +68,31 @@ function dataProcess( xlData ) {
     .findOrCreate( { where: { userId: userProcess.id, description: xlData.Categoria } } )
     .spread( (cat, created) => { categProcess = cat } )
     .then( function() {
-      
       var valor = xlData.Valor;
-
       var movType = ( valor > 0 ? 'Receita' : 'Despesa' );
       
-      db.Movement
-      .create({
-        userId: userProcess.id,
-        accountFrom: accountProcess.id,
-        categoryId: categProcess.id,
-        movementDate: xlData.Data,
-        title: xlData.Descrição,
-        value: valor,
-        movementType: movType
-        })
-      .then(
-        () => {} // sucesso
-        , (err) => console.log('erro no movimento',err) // erro
-        , () => { } // término
-      );
-    } );
-  } );
+      // db.Movement
+      // .create({
+      //   userId: userProcess.id,
+      //   accountFrom: accountProcess.id,
+      //   categoryId: categProcess.id,
+      //   movementDate: xlData.Data,
+      //   title: xlData.Descrição,
+      //   value: valor,
+      //   movementType: movType
+      //   })
+      // .then(
+      //   () => {} // sucesso
+      //   , err => callback(err) // erro
+      //   , () => { } // término
+      // )
+      // .catch( err => callback(err) );
+
+    } )
+    .catch( err => callback(err) );
+
+  } )
+  .catch( err => callback(err) );
 }
 
 function finishLog() {
